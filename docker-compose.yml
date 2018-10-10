@@ -1,0 +1,14 @@
+version: '3'
+services:
+  nginx:
+    image: nginx
+    ports:
+      - 3310:3310
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - clamd
+  clamd:
+    build: .
+    volumes:
+      - ./clamd.conf:/etc/clamav/clamd.conf:ro
